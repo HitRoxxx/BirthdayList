@@ -20,6 +20,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 
 /**
@@ -48,6 +50,13 @@ public class BlankFragment extends Fragment {
 
     public void setData(ArrayList<Demo> al) {
         lv = (ListView) vv.findViewById(R.id.lv);
+        Collections.sort(al, new Comparator<Demo>() {
+            @Override
+            public int compare(Demo o1, Demo o2) {
+                return (Integer.parseInt(o1.age) - Integer.parseInt(o2.age));
+            }
+        });
+
         lv.setAdapter(new MyAdapter(getActivity(), R.layout.birth_day_layout, al));
     }
 
@@ -96,8 +105,8 @@ public class BlankFragment extends Fragment {
             if (Integer.parseInt(demo.age) == 1) {
                 v.setBackgroundColor(Color.rgb(255, 0, 0));
             }
-            if(Integer.parseInt(demo.age)== 365||Integer.parseInt(demo.age)== 366) {
-                v.setBackgroundColor(Color.rgb(255,64, 129));
+            if (Integer.parseInt(demo.age) == 0 ) {
+                v.setBackgroundColor(Color.rgb(255, 64, 129));
                 dayLeft.setText("1/2p BirthDay 2 Him");
                 dayLeft1.setText("Wish Him");
             }

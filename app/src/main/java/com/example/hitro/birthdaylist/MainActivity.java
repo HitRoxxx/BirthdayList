@@ -244,7 +244,7 @@ public class MainActivity extends AppCompatActivity
         {
             if((birthDay.get(Calendar.MONTH) + 1)> 2)
             {
-                if(daysDiff>366)
+                if(daysDiff>=366)
                 {
                     return ""+(daysDiff-366);
                 }
@@ -256,7 +256,7 @@ public class MainActivity extends AppCompatActivity
             }
             else
             {
-                if(daysDiff>365)
+                if(daysDiff>=365)
                 {
                     return ""+(daysDiff-365);
                 }
@@ -269,7 +269,7 @@ public class MainActivity extends AppCompatActivity
         }
         else
         {
-            if(daysDiff>365)
+            if(daysDiff>=365)
             {
                 return ""+(daysDiff-365);
             }
