@@ -4,6 +4,7 @@ package com.example.hitro.birthdaylist;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -85,13 +86,21 @@ public class BlankFragment extends Fragment {
             TextView name = (TextView) v.findViewById(R.id.name);
             TextView birtday = (TextView) v.findViewById(R.id.birthday);
             TextView dayLeft = (TextView) v.findViewById(R.id.dayleft);
+            TextView dayLeft1 = (TextView) v.findViewById(R.id.dayleft1);
 
             Bitmap bitmap = BitmapFactory.decodeByteArray(demo.img, 0, demo.img.length);
             iv.setImageBitmap(bitmap);
             name.setText(demo.name);
             birtday.setText(demo.birthday);
             dayLeft.setText(demo.age);
-
+            if (Integer.parseInt(demo.age) == 1) {
+                v.setBackgroundColor(Color.rgb(255, 0, 0));
+            }
+            if(Integer.parseInt(demo.age)== 365||Integer.parseInt(demo.age)== 366) {
+                v.setBackgroundColor(Color.rgb(255,64, 129));
+                dayLeft.setText("1/2p BirthDay 2 Him");
+                dayLeft1.setText("Wish Him");
+            }
             return v;
         }
     }

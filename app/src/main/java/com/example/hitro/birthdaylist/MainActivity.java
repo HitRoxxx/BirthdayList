@@ -18,6 +18,7 @@ import android.view.View;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.concurrent.TimeUnit;
 
 import static com.example.hitro.birthdaylist.BlankFragment.al;
 
@@ -234,6 +235,54 @@ public class MainActivity extends AppCompatActivity
             }
         }
 
-        return "Year :" + years + " Month :" + months + " Day :" + days;
+        birthDay.set(now.get(Calendar.YEAR)+1, bd[1] - 1,bd[0] );
+        //days between two days
+        long msDiff = birthDay.getTimeInMillis()- Calendar.getInstance().getTimeInMillis() ;
+        long daysDiff = TimeUnit.MILLISECONDS.toDays(msDiff);
+
+        if(birthDay.getActualMaximum(Calendar.DAY_OF_YEAR) > 365  )
+        {
+            if((birthDay.get(Calendar.MONTH) + 1)> 2)
+            {
+                if(daysDiff>366)
+                {
+                    return ""+(daysDiff-366);
+                }
+                else
+                {
+                        return ""+daysDiff;
+                }
+
+            }
+            else
+            {
+                if(daysDiff>365)
+                {
+                    return ""+(daysDiff-365);
+                }
+                else
+                {
+                    return ""+daysDiff;
+                }
+            }
+
+        }
+        else
+        {
+            if(daysDiff>365)
+            {
+                return ""+(daysDiff-365);
+            }
+            else
+            {
+
+                return ""+daysDiff;
+            }
+        }
+        //return ""+daysDiff;
+
+        //return "Year :" + years + " Month :" + months + " Day :" + days;
     }
+
+
 }

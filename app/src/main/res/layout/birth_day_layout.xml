@@ -64,6 +64,7 @@
                 android:layout_marginBottom="5dp"
                 android:layout_weight="1"
                 android:text="Day Left"
+                android:id="@+id/dayleft1"
                 android:textAppearance="?android:textAppearanceMedium"
                 android:textColor="#ff0000" />
 
