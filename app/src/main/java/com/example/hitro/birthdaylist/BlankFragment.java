@@ -97,15 +97,25 @@ public class BlankFragment extends Fragment {
             TextView dayLeft = (TextView) v.findViewById(R.id.dayleft);
             TextView dayLeft1 = (TextView) v.findViewById(R.id.dayleft1);
 
+            String str = demo.name;
+            char[] st = str.toCharArray();
+
+            if (str.length() > 15) {
+                str = "";
+                for (int i = 0; i < 15; i++) {
+                    str += st[i];
+                }
+            }
+
             Bitmap bitmap = BitmapFactory.decodeByteArray(demo.img, 0, demo.img.length);
             iv.setImageBitmap(bitmap);
-            name.setText(demo.name);
+            name.setText(str);
             birtday.setText(demo.birthday);
             dayLeft.setText(demo.age);
             if (Integer.parseInt(demo.age) == 1) {
                 v.setBackgroundColor(Color.rgb(255, 0, 0));
             }
-            if (Integer.parseInt(demo.age) == 0 ) {
+            if (Integer.parseInt(demo.age) == 0) {
                 v.setBackgroundColor(Color.rgb(255, 64, 129));
                 dayLeft.setText("1/2p BirthDay 2 Him");
                 dayLeft1.setText("Wish Him");
